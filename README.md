@@ -11,4 +11,6 @@ B) The prefetcher is in ARM mode and is 1 cycle away from finishing fetching eit
 It's worth noting that ROM accesses normally take (<# of waitstates> + 1) cycles to complete. It seems logical that this + 1 cycle is special in some way. Exactly how it's special, I'm not sure, but the fact remains that if a ROM data access is made while the prefetcher is in that special cycle, the ROM access stalls an extra cycle.
 
 ## How The Test Works
-This rom will work through 4 possible waitstate configurations (the same ones used in the mGBA test suite, 0x4000, 0x4010, 0x4004, and 0x4014). For each waitstate configuration, it will run 1-8 NOPs and then immediately perform a ROM data read. This leads to 32 tests in total. Then it will time how long that data read took and compare it against results from hardware.
+This rom will work through 4 possible waitstate configurations (the same ones used in the mGBA test suite, 0x4000, 0x4004, 0x4010, and 0x4014). For each waitstate configuration, it will run 1-8 NOPs and then immediately perform a ROM data read. Then it will time how long that data read took and compare it against results from hardware.
+
+The rom will perform this same procedure for both reads and writes. The test as well as the expected behavior for reads and writes is the same, it's just that the `ldr` that occurs after the idle cycles is replaced with an `str`. This makes a total of 32 * 2 = 64 tests.
