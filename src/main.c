@@ -200,10 +200,10 @@ void wait_for_a_press() {
 }
 
 void do_read_test() {
-    printf("  Wait:   .. N. .S NS (read)\n");
+    printf("  Wait:    .. N. .S NS  read\n");
     printf("Expected:\n");
     for (int i = 0; i < NUM_TESTS; i++) {
-        printf("  %d nops: ", i);
+        printf("  %d idles: ", i);
         for (int w = 0; w < 4; w++) {
             printf("%02x ", read_expected[i * 4 + w]);
         }
@@ -213,7 +213,7 @@ void do_read_test() {
     bool all_correct = true;
     printf("Actual: \n");
     for (int i = 0; i < NUM_TESTS; i++) {
-        printf("  %d nops: ", i);
+        printf("  %d idles: ", i);
         for (int w = 0; w < 4; w++) {
             int waitstate = waitstates[w];
             REG_WAITCNT = waitstate;
@@ -231,10 +231,10 @@ void do_read_test() {
 }
 
 void do_write_test() {
-    printf("  Wait:   .. N. .S NS (write)\n");
+    printf("  Wait:    .. N. .S NS  write\n");
     printf("Expected:\n");
     for (int i = 0; i < NUM_TESTS; i++) {
-        printf("  %d nops: ", i);
+        printf("  %d idles: ", i);
         for (int w = 0; w < 4; w++) {
             printf("%02x ", write_expected[i * 4 + w]);
         }
@@ -244,7 +244,7 @@ void do_write_test() {
     bool all_correct = true;
     printf("Actual: \n");
     for (int i = 0; i < NUM_TESTS; i++) {
-        printf("  %d nops: ", i);
+        printf("  %d idles: ", i);
         for (int w = 0; w < 4; w++) {
             int waitstate = waitstates[w];
             REG_WAITCNT = waitstate;
