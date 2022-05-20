@@ -2,7 +2,7 @@
 This rom tests some weird behavior of the GBA prefetcher which can cause some ROM data accesses to delay one cycle longer than expected. 
 
 ## Prefetcher 1-Cycle Delay Behavior
-Basically, when the prefetcher is currently in the middle of prefetching an opcode and a ROM data access is made (either reads or writes, doesn't matter), the access will idle an extra cycle than it normally does iff either:
+Basically, when the prefetcher is currently in the middle of prefetching an opcode and a ROM data access is made (either reads or writes, doesn't matter), the access will idle an extra cycle than it normally does if either:
 
 A) The prefetcher is in THUMB mode and is 1 cycle away from finishing it's current fetch.
 
