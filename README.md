@@ -14,3 +14,5 @@ It's worth noting that ROM accesses normally take (<# of waitstates> + 1) cycles
 This rom will work through 4 possible waitstate configurations (the same ones used in the mGBA test suite, 0x4000, 0x4004, 0x4010, and 0x4014). For each waitstate configuration, it will run 1-8 NOPs and then immediately perform a ROM data read. Then it will time how long that data read took and compare it against results from hardware.
 
 The rom will perform this same procedure for both reads and writes. The test as well as the expected behavior for reads and writes is the same, it's just that the `ldr` that occurs after the idle cycles is replaced with an `str`. This makes a total of 32 * 2 = 64 tests.
+
+Press A to cycle between the read tests and the write tests.
